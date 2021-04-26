@@ -37,30 +37,10 @@ sysinfo.txt
 *.unitypackage
 
 # Logs
-*/Logs/
-*/Logs.meta
+Logs/
+Logs.meta
 
-/Assets/Anima2D/
-/Assets/Anima2D.meta
-/.vscode/
-/Assets/TextMesh*Pro/
-/Assets/TextMesh*Pro.meta
+.vscode/
+Tiny\ RPG\ Forest/
+Tiny\ RPG\ Forest.meta
 
-# Astar stuff (custom package located here: https://arongranberg.com/astar/)
-/Assets/AstarPathfindingProject/
-/Assets/AstarPathfindingProject.meta
-/Assets/_TerrainAutoUpgrade/
-/Assets/_TerrainAutoUpgrade.meta
-
-# Panda BT stuff
-/Assets/PandaBehaviour/
-/Assets/PandaBehaviour.meta
-
-# Mirror stuff
-/Assets/Mirror/
-/Assets/Mirror.meta
-/Assets/ScriptTemplates/
-/Assets/ScriptTemplates.meta
-
-/Assets/Thirdparty/
-/Assets/Thirdparty.meta
