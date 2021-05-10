@@ -5,35 +5,62 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float iHorz = 0;
-    public float iVert = 0;
-
-    private Animator animator;
+    [ReadOnly] public float iHorz = 0;
+    [ReadOnly] public float iVert = 0;
 
     PlayerPhysics physics;
 
+    PlayerState state;
+
+    [Header("Debug")]
+    [SerializeField] bool isDebug;
+
     void Awake()
     {
-        animator = GetComponent<Animator>();
         physics = GetComponent<PlayerPhysics>();
+        state = new IdleState(this);
+    }
+
+    void OnGUI()
+    {
+        if (!isDebug) return;
+        GUI.Label(new Rect(10, 50, 150, 20), string.Format("State: {0}", state));
     }
 
     void Update()
     {
-        //todo move this to state
-        physics.Walk(new Vector2(iHorz, iVert), Time.deltaTime);
-        animator.SetFloat("Speed", new Vector2(iHorz, iVert).magnitude);
+        CheckNewState(state.Update());
+    }
 
+    void HandleInput()
+    {
+        CheckNewState(state.HandleInput());
+    }
+
+    private void CheckNewState(PlayerState newState)
+    {
+        if (newState == null || newState.ToString() == state.ToString())
+            return;
+
+        state.StateExit();
+        state = newState;
+        state.StateEnter();
+    }
+
+    public void Walk()
+    {
+        Vector2 displacement = new Vector2(iHorz, iVert);
+        physics.Walk(displacement, Time.deltaTime);
     }
 
     public void OnHorizontal(InputAction.CallbackContext context)
     {
         iHorz = context.ReadValue<float>();
-        animator.SetFloat("Horizontal", iHorz);
+        HandleInput();
     }
     public void OnVertical(InputAction.CallbackContext context)
     {
         iVert = context.ReadValue<float>();
-        animator.SetFloat("Vertical", iVert);
+        HandleInput();
     }
 }

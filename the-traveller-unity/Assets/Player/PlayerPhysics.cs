@@ -69,7 +69,7 @@ public class PlayerPhysics : MonoBehaviour
     void OnGUI()
     {
         if (!isDebug) return;
-        GUI.Label(new Rect(10, 10, 100, 20), string.Format("Velocity: {0}", velocity.x));
+        GUI.Label(new Rect(10, 10, 200, 20), string.Format("Velocity: {0}", velocity));
     }
 
     void FixedUpdate()
