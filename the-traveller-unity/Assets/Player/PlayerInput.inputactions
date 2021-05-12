@@ -20,6 +20,14 @@
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "World Toggle",
+                    "type": "Button",
+                    "id": "2cfb14a2-5283-445f-a44b-48b1583280c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -88,6 +96,17 @@
                     "action": "Vertical",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e09de71e-c88a-4330-ba18-1b8915895ffc",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "World Toggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

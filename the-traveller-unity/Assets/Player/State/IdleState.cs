@@ -14,16 +14,20 @@ public class IdleState : PlayerState
     }
     public override PlayerState HandleInput()
     {
-        PlayerState newState = CheckMoveStates();
-        return newState != null ? newState : CheckIdleStates();
+        PlayerState newState = CheckAbilityStates();
+        if (newState != null) return newState;
+        newState = CheckMoveStates();
+        if (newState != null) return newState;
+        return CheckIdleStates();
     }
 
     public override void StateEnter()
     {
+        player.GetAnimations().SetTrigger("Idle");
     }
 
     public override void StateExit()
     {
-
+        player.GetAnimations().ResetAnimParameters();
     }
 }

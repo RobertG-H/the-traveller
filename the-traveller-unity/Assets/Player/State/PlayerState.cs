@@ -10,8 +10,18 @@ public abstract class PlayerState
 
     public string name;
 
+    protected PlayerState CheckAbilityStates()
+    {
+        if (player.iWorldToggle)
+        {
+            return new WorldToggleState(player);
+        }
+        return null;
+    }
+
     protected PlayerState CheckMoveStates()
     {
+
         if (Mathf.Abs(player.iHorz) > 0 || Mathf.Abs(player.iVert) > 0)
         {
             return new WalkingState(player);
@@ -32,6 +42,4 @@ public abstract class PlayerState
     {
         return this.GetType().Name;
     }
-
-
 }

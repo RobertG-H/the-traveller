@@ -5,35 +5,60 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     Animator animator;
-    SpriteRenderer renderer;
+    SpriteRenderer spriteRenderer;
     [SerializeField] PlayerController player;
     void Awake()
     {
         animator = GetComponent<Animator>();
-        renderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         CheckFacingDirection();
-
-        Vector2 displacement = new Vector2(player.iHorz, player.iVert);
-        animator.SetFloat("Horizontal", displacement.x);
-        animator.SetFloat("Vertical", displacement.y);
-        animator.SetFloat("Speed", displacement.magnitude);
-
-
     }
 
     void CheckFacingDirection()
     {
         if (player.iHorz < 0)
         {
-            renderer.flipX = true;
+            spriteRenderer.flipX = true;
         }
         else
         {
-            renderer.flipX = false;
+            spriteRenderer.flipX = false;
         }
     }
+
+    #region Public methods
+    public void SetFloat(string name, float value)
+    {
+        animator.SetFloat(name, value);
+    }
+
+    public void SetTrigger(string name)
+    {
+        animator.SetTrigger(name);
+    }
+
+    public void ResetAnimParameters()
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.type == AnimatorControllerParameterType.Bool)
+            {
+                animator.SetBool(param.name, false);
+            }
+            else if (param.type == AnimatorControllerParameterType.Trigger)
+            {
+                animator.ResetTrigger(param.name);
+            }
+            else if (param.type == AnimatorControllerParameterType.Float)
+            {
+                animator.SetFloat(param.name, 0);
+            }
+        }
+    }
+
+    #endregion
 }

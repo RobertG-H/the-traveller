@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     [ReadOnly] public float iHorz = 0;
     [ReadOnly] public float iVert = 0;
-
+    [ReadOnly] public bool iWorldToggle = false;
     PlayerPhysics physics;
-
-    PlayerState state;
+    PlayerStateMachine stateMachine;
+    [SerializeField] PlayerAnimations animations;
+    WorldToggler worldToggler;
 
     [Header("Debug")]
     [SerializeField] bool isDebug;
@@ -18,34 +19,11 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         physics = GetComponent<PlayerPhysics>();
-        state = new IdleState(this);
+        stateMachine = GetComponent<PlayerStateMachine>();
+        worldToggler = GetComponent<WorldToggler>();
     }
 
-    void OnGUI()
-    {
-        if (!isDebug) return;
-        GUI.Label(new Rect(10, 50, 150, 20), string.Format("State: {0}", state));
-    }
-
-    void Update()
-    {
-        CheckNewState(state.Update());
-    }
-
-    void HandleInput()
-    {
-        CheckNewState(state.HandleInput());
-    }
-
-    private void CheckNewState(PlayerState newState)
-    {
-        if (newState == null || newState.ToString() == state.ToString())
-            return;
-
-        state.StateExit();
-        state = newState;
-        state.StateEnter();
-    }
+    #region Player Actions
 
     public void Walk()
     {
@@ -53,14 +31,46 @@ public class PlayerController : MonoBehaviour
         physics.Walk(displacement, Time.deltaTime);
     }
 
+    public void WorldToggle()
+    {
+        worldToggler.ToggleWorlds();
+    }
+
+    #endregion
+
+    #region Input
+
     public void OnHorizontal(InputAction.CallbackContext context)
     {
         iHorz = context.ReadValue<float>();
-        HandleInput();
+        stateMachine.HandleInput();
     }
     public void OnVertical(InputAction.CallbackContext context)
     {
         iVert = context.ReadValue<float>();
-        HandleInput();
+        stateMachine.HandleInput();
     }
+
+    public void OnWorldToggle(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            iWorldToggle = true;
+        }
+        else if (context.canceled)
+        {
+            iWorldToggle = false;
+        }
+        stateMachine.HandleInput();
+    }
+
+    #endregion
+
+    #region Getters and Setters
+    public PlayerAnimations GetAnimations()
+    {
+        return animations;
+    }
+
+    #endregion
 }
