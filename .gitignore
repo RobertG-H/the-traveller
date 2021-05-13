@@ -44,3 +44,13 @@ Logs.meta
 Tiny\ RPG\ Forest/
 Tiny\ RPG\ Forest.meta
 
+# Astar stuff (custom package located here: https://arongranberg.com/astar/)
+AstarPathfindingProject/
+AstarPathfindingProject.meta
+_TerrainAutoUpgrade/
+_TerrainAutoUpgrade.meta
+
+# Panda BT stuff
+PandaBehaviour/
+PandaBehaviour.meta
+
