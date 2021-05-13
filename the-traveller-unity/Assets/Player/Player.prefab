@@ -267,9 +267,10 @@ GameObject:
   - component: {fileID: 7343256476694237033}
   - component: {fileID: 7343256476694237034}
   - component: {fileID: 7343256476694237028}
-  - component: {fileID: 4971818615981352445}
   - component: {fileID: 7343256476694237035}
   - component: {fileID: 4079089512292985894}
+  - component: {fileID: 4971818615981352445}
+  - component: {fileID: 8025420305271997875}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -389,19 +390,6 @@ MonoBehaviour:
   iWorldToggle: 0
   animations: {fileID: 5699673948441249726}
   isDebug: 1
---- !u!114 &4971818615981352445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7343256476694237039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d3e506dd729f334a8c92f513f85485e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDebug: 1
 --- !u!114 &7343256476694237035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,3 +425,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   futureRealm: {fileID: 0}
   fireRealm: {fileID: 0}
+--- !u!114 &4971818615981352445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343256476694237039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3e506dd729f334a8c92f513f85485e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDebug: 1
+--- !u!114 &8025420305271997875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343256476694237039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e36547ebc505f478c79463e70c2cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

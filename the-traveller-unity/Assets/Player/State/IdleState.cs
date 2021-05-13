@@ -10,7 +10,7 @@ public class IdleState : PlayerState
     }
     public override PlayerState Update()
     {
-        return null;
+        return CheckMoveStates();
     }
     public override PlayerState HandleInput()
     {

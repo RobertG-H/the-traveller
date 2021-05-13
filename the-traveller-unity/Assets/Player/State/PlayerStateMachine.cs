@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(StateTimer))]
 public class PlayerStateMachine : MonoBehaviour
 {
     PlayerState state;
+    PlayerController player;
     [SerializeField] bool isDebug;
-
+    StateTimer stateTimer;
 
     void Awake()
     {
-        state = new IdleState(GetComponent<PlayerController>());
+        player = GetComponent<PlayerController>();
+        state = new IdleState(player);
+        stateTimer = GetComponent<StateTimer>();
     }
 
     void OnGUI()
@@ -36,5 +40,15 @@ public class PlayerStateMachine : MonoBehaviour
         state.StateExit();
         state = newState;
         state.StateEnter();
+    }
+
+    public void ForceExitState(PlayerState newState)
+    {
+        CheckNewState(newState);
+    }
+
+    public StateTimer GetStateTimer()
+    {
+        return stateTimer;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class WorldToggleState : PlayerState
 {
     bool success = false;
+    float duration = 1f;
     public WorldToggleState(PlayerController player)
     {
         this.player = player;
@@ -26,6 +27,7 @@ public class WorldToggleState : PlayerState
     {
         // Start timer
         player.GetAnimations().SetTrigger("WorldToggling");
+        player.GetStateMachine().GetStateTimer().AddTimer(new StateTimerCallbackDelegate(Complete), duration);
     }
 
     public override void StateExit()
@@ -33,11 +35,19 @@ public class WorldToggleState : PlayerState
         player.GetAnimations().ResetAnimParameters();
         if (success)
         {
-            // player
+            player.WorldToggle();
+            Debug.Log("world toggle complete!");
         }
         else
         {
-
+            Debug.Log("World toggle failed...");
+            player.GetStateMachine().GetStateTimer().StopTimers();
         }
+    }
+
+    private void Complete()
+    {
+        success = true;
+        player.GetStateMachine().ForceExitState(new IdleState(player));
     }
 }

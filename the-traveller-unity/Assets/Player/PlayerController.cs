@@ -72,5 +72,10 @@ public class PlayerController : MonoBehaviour
         return animations;
     }
 
+    public PlayerStateMachine GetStateMachine()
+    {
+        return stateMachine;
+    }
+
     #endregion
 }
