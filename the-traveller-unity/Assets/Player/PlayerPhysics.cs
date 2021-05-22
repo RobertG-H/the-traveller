@@ -8,6 +8,9 @@ public static class LayerMaskConfig
     {
         //Layers that the player should ignore
         DEFAULT = 1 << LayerMask.NameToLayer("Player");
+        DEFAULT += 1 << LayerMask.NameToLayer("Ignore Raycast");
+        DEFAULT += 1 << LayerMask.NameToLayer("Hitbox");
+
 
         DEFAULT = ~DEFAULT;
     }
@@ -17,6 +20,8 @@ public class PlayerPhysics : MonoBehaviour
 {
     [SerializeField] PlayerController p;
     [SerializeField] BoxCollider2D ECB;
+
+    Rigidbody2D rb;
 
     #region Local State Variables
     Vector2 velocity = Vector2.zero;
@@ -59,6 +64,7 @@ public class PlayerPhysics : MonoBehaviour
     void Awake()
     {
         LayerMaskConfig.initConfig();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -104,7 +110,7 @@ public class PlayerPhysics : MonoBehaviour
         UpdateRaycastOrigins();
         HorizontalCollisions(ref displacement);
         VerticalCollisions(ref displacement);
-        gameObject.transform.Translate(new Vector3((float)System.Math.Round(displacement.x, decimals), (float)System.Math.Round(displacement.y, decimals), 0));
+        rb.MovePosition(rb.position + new Vector2((float)System.Math.Round(displacement.x, decimals), (float)System.Math.Round(displacement.y, decimals)));
     }
     #endregion
 

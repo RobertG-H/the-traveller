@@ -7,15 +7,18 @@ public class PlayerAnimations : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
     [SerializeField] PlayerController player;
+    public bool isFlashing;
     void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        isFlashing = false;
     }
 
     void Update()
     {
         CheckFacingDirection();
+        CheckFlashing();
     }
 
     void CheckFacingDirection()
@@ -28,6 +31,36 @@ public class PlayerAnimations : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+    }
+
+    void CheckFlashing()
+    {
+        if (!isFlashing)
+        {
+            Color newColor = spriteRenderer.color;
+            newColor.a = 1;
+            spriteRenderer.color = newColor;
+            CancelInvoke();
+            return;
+        }
+        InvokeRepeating("WaitAndFlash", 0, 0.2f);
+    }
+
+    void WaitAndFlash()
+    {
+        Color newColor = spriteRenderer.color;
+        if (newColor.a == 0)
+        {
+            newColor.a = 1;
+            spriteRenderer.color = newColor;
+        }
+        else
+        {
+            newColor.a = 0;
+            spriteRenderer.color = newColor;
+        }
+
+
     }
 
     #region Public methods

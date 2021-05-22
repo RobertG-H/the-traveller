@@ -31,6 +31,7 @@ public class MinionController : MonoBehaviour
         isInDamageMode = false;
         needToDamageToggle = false;
         damageTimerOn = false;
+        fire.SetActive(false);
     }
     void ChangeState(MinionStates newState)
     {
@@ -53,7 +54,7 @@ public class MinionController : MonoBehaviour
             return false;
         }
         if (damageTimerOn) return true;
-        InvokeRepeating("SetNeedToDamageToggle", 0, timeToToggle);
+        InvokeRepeating("SetNeedToDamageToggle", timeToToggle, timeToToggle);
         damageTimerOn = true;
         return true;
     }
@@ -99,13 +100,21 @@ public class MinionController : MonoBehaviour
         if (isInDamageMode)
         {
             isInDamageMode = false;
-            fire.SetActive(true);
+            fire.SetActive(false);
         }
         else
         {
             isInDamageMode = true;
-            fire.SetActive(false);
+            fire.SetActive(true);
         }
+    }
+
+    void OnDisable()
+    {
+        // damageTimerOn = false;
+        needToDamageToggle = false;
+        fire.SetActive(false);
+        isInDamageMode = false;
     }
 
 }

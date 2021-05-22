@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, Damageable
 {
     [ReadOnly] public float iHorz = 0;
     [ReadOnly] public float iVert = 0;
     [ReadOnly] public bool iWorldToggle = false;
+    [SerializeField] float maxHealth;
+    [SerializeField, ReadOnly] float health;
+    bool isDamageable;
     PlayerPhysics physics;
     PlayerStateMachine stateMachine;
     [SerializeField] PlayerAnimations animations;
@@ -21,6 +24,13 @@ public class PlayerController : MonoBehaviour
         physics = GetComponent<PlayerPhysics>();
         stateMachine = GetComponent<PlayerStateMachine>();
         worldToggler = GetComponent<WorldToggler>();
+        Initialize();
+    }
+
+    void Initialize()
+    {
+        health = maxHealth;
+        isDamageable = true;
     }
 
     #region Player Actions
@@ -78,4 +88,28 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    void Damageable.TakeDamage(float damage)
+    {
+        health -= damage;
+        StartCoroutine(InvincibleTimer());
+    }
+
+    bool Damageable.IsDamageable()
+    {
+        return isDamageable;
+    }
+
+    private IEnumerator InvincibleTimer()
+    {
+        animations.isFlashing = true;
+        while (true)
+        {
+            yield return new WaitForSeconds(0.8f);
+            isDamageable = true;
+            animations.isFlashing = false;
+        }
+    }
+
+
 }
