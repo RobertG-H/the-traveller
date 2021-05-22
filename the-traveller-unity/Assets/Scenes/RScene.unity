@@ -407,6 +407,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 491904141, guid: b47fd859ab9a6cf46a7b59a1092be25a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491904141, guid: b47fd859ab9a6cf46a7b59a1092be25a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 491904141, guid: b47fd859ab9a6cf46a7b59a1092be25a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6865909164733498149, guid: b47fd859ab9a6cf46a7b59a1092be25a, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -493,6 +505,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6865909164733498169, guid: b47fd859ab9a6cf46a7b59a1092be25a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865909165439354759, guid: b47fd859ab9a6cf46a7b59a1092be25a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865909165439354759, guid: b47fd859ab9a6cf46a7b59a1092be25a, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

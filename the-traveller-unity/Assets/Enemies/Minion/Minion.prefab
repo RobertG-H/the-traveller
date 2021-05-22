@@ -296,6 +296,7 @@ MonoBehaviour:
   aiPath: {fileID: 5884071225666175015}
   animations: {fileID: 5884071225265688762}
   fire: {fileID: 134936519050674217}
+  hitBox: {fileID: 1105255480133449911}
   currentState: 0
   timeToToggle: 3
   timeEnergy: 25
