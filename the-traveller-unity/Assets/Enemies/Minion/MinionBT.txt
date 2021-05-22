@@ -1,0 +1,12 @@
+  
+tree("Root")
+	sequence
+        IsActive
+        TryStartToggle
+        mute
+            sequence
+                NeedsToDamageToggle
+                StartDamageToggle
+                repeat 
+                    NeedsToDamageToggle
+        PathToPlayer

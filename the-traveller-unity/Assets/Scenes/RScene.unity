@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2148408395339335704, guid: 1d11eac282d019d49910695af996edfc, type: 3}
+      propertyPath: logPathResults
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2148408395339335705, guid: 1d11eac282d019d49910695af996edfc, type: 3}
       propertyPath: m_Name
       value: Pathfinding
@@ -334,11 +338,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5884071225666175065, guid: e105c0554a900de40aae22cd2578468b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.66
       objectReference: {fileID: 0}
     - target: {fileID: 5884071225666175065, guid: e105c0554a900de40aae22cd2578468b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: 5884071225666175065, guid: e105c0554a900de40aae22cd2578468b, type: 3}
       propertyPath: m_LocalPosition.z
