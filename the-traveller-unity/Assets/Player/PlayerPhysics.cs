@@ -80,10 +80,12 @@ public class PlayerPhysics : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        ApplyFriction();
-        Vector2 displacement = velocity * Time.fixedDeltaTime;
-        ApplyMovement(displacement);
+        if (rb.isKinematic)
+        {
+            ApplyFriction();
+            Vector2 displacement = velocity * Time.fixedDeltaTime;
+            ApplyMovement(displacement);
+        }
     }
 
 
@@ -122,6 +124,11 @@ public class PlayerPhysics : MonoBehaviour
         {
             SetVel(WALK_MAX_SPEED * input.normalized);
         }
+    }
+
+    public void HitStun(Vector2 hitStunVector)
+    {
+        rb.AddForce(hitStunVector, ForceMode2D.Impulse);
     }
     #endregion
 
@@ -233,6 +240,17 @@ public class PlayerPhysics : MonoBehaviour
     public Vector2 GetVel()
     {
         return velocity;
+    }
+
+    public void SetDynamic()
+    {
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = false;
+    }
+    public void SetKinematic()
+    {
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
     }
     #endregion
 }

@@ -48,6 +48,6 @@ public class WorldToggleState : PlayerState
     private void Complete()
     {
         success = true;
-        player.GetStateMachine().ForceExitState(new IdleState(player));
+        player.GetStateMachine().ForceEnterState(new IdleState(player));
     }
 }

@@ -324,6 +324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4506987336791054824, guid: e105c0554a900de40aae22cd2578468b, type: 3}
+      propertyPath: forceMag
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5884071225666175012, guid: e105c0554a900de40aae22cd2578468b, type: 3}
       propertyPath: target
       value: 
@@ -393,6 +397,10 @@ PrefabInstance:
       propertyPath: futureRealm
       value: 
       objectReference: {fileID: 1350754557}
+    - target: {fileID: 5232749373558682148, guid: eaa9a5c16e82fe749a56b91f93383173, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7343256476694237033, guid: eaa9a5c16e82fe749a56b91f93383173, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -87,11 +87,23 @@ public class PlayerController : MonoBehaviour, Damageable
         return stateMachine;
     }
 
+    public PlayerPhysics GetPhysics()
+    {
+        return physics;
+    }
+
     #endregion
 
     void Damageable.TakeDamage(float damage)
     {
         health -= damage;
+        StartCoroutine(InvincibleTimer());
+    }
+
+    void Damageable.TakeDamage(float damage, Vector2 force)
+    {
+        health -= damage;
+        stateMachine.ForceEnterState(new HitStunState(this, force));
         StartCoroutine(InvincibleTimer());
     }
 

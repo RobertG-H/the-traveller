@@ -42,7 +42,7 @@ public class PlayerStateMachine : MonoBehaviour
         state.StateEnter();
     }
 
-    public void ForceExitState(PlayerState newState)
+    public void ForceEnterState(PlayerState newState)
     {
         CheckNewState(newState);
     }
