@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour, Damageable
     [ReadOnly] public float iVert = 0;
     [ReadOnly] public bool iWorldToggle = false;
     [ReadOnly] public bool iDash = false;
-    [SerializeField] float maxHealth;
-    [SerializeField, ReadOnly] float health;
+    [SerializeField] int maxHealth;
+    [SerializeField, ReadOnly] int health;
+    [SerializeField] float maxTimeEnergy;
+    [SerializeField, ReadOnly] float timeEnergy;
     bool isDamageable;
     PlayerPhysics physics;
     PlayerStateMachine stateMachine;
     [SerializeField] PlayerAnimations animations;
+    [SerializeField] HUDController hudController;
     WorldToggler worldToggler;
 
     [Header("Debug")]
@@ -25,15 +28,21 @@ public class PlayerController : MonoBehaviour, Damageable
         physics = GetComponent<PlayerPhysics>();
         stateMachine = GetComponent<PlayerStateMachine>();
         worldToggler = GetComponent<WorldToggler>();
+    }
+
+    void Start()
+    {
         Initialize();
     }
 
     void Initialize()
     {
         health = maxHealth;
+        hudController.SetMaxHealth(maxHealth);
+        hudController.SetCurrentHealth(health);
+        hudController.SetCurrentTimeEnergy(timeEnergy);
         isDamageable = true;
     }
-
     #region Player Actions
 
     public void Walk()
@@ -108,15 +117,16 @@ public class PlayerController : MonoBehaviour, Damageable
 
     #endregion
 
-    void Damageable.TakeDamage(float damage)
+    void Damageable.TakeDamage(int damage)
     {
         health -= damage;
         StartCoroutine(InvincibleTimer());
     }
 
-    void Damageable.TakeDamage(float damage, Vector2 force)
+    void Damageable.TakeDamage(int damage, Vector2 force)
     {
         health -= damage;
+        hudController.SetCurrentHealth(health);
         stateMachine.ForceEnterState(new HitStunState(this, force));
         StartCoroutine(InvincibleTimer());
     }
@@ -124,6 +134,20 @@ public class PlayerController : MonoBehaviour, Damageable
     bool Damageable.IsDamageable()
     {
         return isDamageable;
+    }
+
+    public void GainTimeEnergy(float timeEnergy)
+    {
+        if (this.timeEnergy == maxTimeEnergy) return;
+        if (this.timeEnergy + timeEnergy > maxTimeEnergy)
+        {
+            this.timeEnergy = maxTimeEnergy;
+        }
+        else
+        {
+            this.timeEnergy += timeEnergy;
+        }
+        hudController.SetCurrentTimeEnergy(this.timeEnergy);
     }
 
     private IEnumerator InvincibleTimer()

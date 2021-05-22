@@ -1,7 +1,7 @@
 using UnityEngine;
 interface Damageable
 {
-    void TakeDamage(float damage);
-    void TakeDamage(float damage, Vector2 force);
+    void TakeDamage(int damage);
+    void TakeDamage(int damage, Vector2 force);
     bool IsDamageable();
 }

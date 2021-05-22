@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     [SerializeField] GameObject objectToDestroy;
-    [SerializeField] float damage;
+    [SerializeField] int damage;
     [SerializeField] float forceMag;
     public void OnTriggerEnter2D(Collider2D other)
     {

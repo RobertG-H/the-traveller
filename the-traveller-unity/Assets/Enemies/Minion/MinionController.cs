@@ -11,14 +11,16 @@ public enum MinionStates
     DamageToggling,
 }
 
-public class MinionController : MonoBehaviour
+public class MinionController : MonoBehaviour, IGiveTimeEnergy
 {
     public bool isActive = true;
     public AIPath aiPath;
     [SerializeField] MinionAnimations animations;
     [SerializeField] GameObject fire;
+    [SerializeField] GameObject hitBox;
     [SerializeField, ReadOnly] MinionStates currentState;
     [SerializeField] float timeToToggle = 1.5f;
+    [SerializeField] float timeEnergy = 25f;
 
     bool damageTimerOn;
     bool needToDamageToggle;
@@ -101,11 +103,14 @@ public class MinionController : MonoBehaviour
         {
             isInDamageMode = false;
             fire.SetActive(false);
+            hitBox.SetActive(true);
+
         }
         else
         {
             isInDamageMode = true;
             fire.SetActive(true);
+            hitBox.SetActive(false);
         }
     }
 
@@ -115,6 +120,11 @@ public class MinionController : MonoBehaviour
         needToDamageToggle = false;
         fire.SetActive(false);
         isInDamageMode = false;
+    }
+
+    float IGiveTimeEnergy.GetTimeEnergy()
+    {
+        return timeEnergy;
     }
 
 }
