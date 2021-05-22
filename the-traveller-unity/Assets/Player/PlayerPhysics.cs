@@ -26,6 +26,7 @@ public class PlayerPhysics : MonoBehaviour
     #region Local State Variables
     Vector2 velocity = Vector2.zero;
     // Vector2 facingDirection = Vector2.right;
+    bool ignoreFriction = false;
 
     #endregion
 
@@ -82,7 +83,7 @@ public class PlayerPhysics : MonoBehaviour
     {
         if (rb.isKinematic)
         {
-            ApplyFriction();
+            if (!ignoreFriction) ApplyFriction();
             Vector2 displacement = velocity * Time.fixedDeltaTime;
             ApplyMovement(displacement);
         }
@@ -130,6 +131,19 @@ public class PlayerPhysics : MonoBehaviour
     {
         rb.AddForce(hitStunVector, ForceMode2D.Impulse);
     }
+
+    public void StartDash(Vector2 dashVector)
+    {
+        SetVel(dashVector);
+        ignoreFriction = true;
+    }
+
+    public void StopDash()
+    {
+        SetVel(Vector2.zero);
+        ignoreFriction = false;
+    }
+
     #endregion
 
     #region Raycasting Methods
@@ -245,11 +259,13 @@ public class PlayerPhysics : MonoBehaviour
     public void SetDynamic()
     {
         rb.velocity = Vector2.zero;
+        SetVel(Vector2.zero);
         rb.isKinematic = false;
     }
     public void SetKinematic()
     {
         rb.velocity = Vector2.zero;
+        SetVel(Vector2.zero);
         rb.isKinematic = true;
     }
     #endregion

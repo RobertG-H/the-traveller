@@ -9,12 +9,14 @@ public class PlayerStateMachine : MonoBehaviour
     PlayerController player;
     [SerializeField] bool isDebug;
     StateTimer stateTimer;
+    PlayerCooldowns cooldowns;
 
     void Awake()
     {
         player = GetComponent<PlayerController>();
         state = new IdleState(player);
         stateTimer = GetComponent<StateTimer>();
+        cooldowns = GetComponent<PlayerCooldowns>();
     }
 
     void OnGUI()
@@ -37,7 +39,10 @@ public class PlayerStateMachine : MonoBehaviour
         if (newState == null || newState.ToString() == state.ToString())
             return;
 
+        if (cooldowns.IsOnCooldown(newState.ToString())) return;
+
         state.StateExit();
+        cooldowns.StartCooldown(state.ToString());
         state = newState;
         state.StateEnter();
     }

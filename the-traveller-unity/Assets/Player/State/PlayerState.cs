@@ -12,6 +12,10 @@ public abstract class PlayerState
 
     protected PlayerState CheckAbilityStates()
     {
+        if (player.iDash)
+        {
+            return new DashState(player);
+        }
         if (player.iWorldToggle)
         {
             return new WorldToggleState(player);

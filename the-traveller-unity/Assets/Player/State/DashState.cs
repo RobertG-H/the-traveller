@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitStunState : PlayerState
+public class DashState : PlayerState
 {
-    Vector2 force;
-    float duration = 0.3f;
-    public HitStunState(PlayerController player, Vector2 force)
+    float duration = 0.2f;
+    float dashSpeed = 30f;
+    public DashState(PlayerController player)
     {
         this.player = player;
-        this.force = force;
     }
     public override PlayerState Update()
     {
@@ -22,20 +21,20 @@ public class HitStunState : PlayerState
 
     public override void StateEnter()
     {
-        player.GetAnimations().SetTrigger("HitStun");
-        player.GetPhysics().SetDynamic();
+        player.GetAnimations().SetTrigger("Dash");
         player.GetStateMachine().GetStateTimer().AddTimer(new StateTimerCallbackDelegate(Complete), duration);
-        player.GetPhysics().HitStun(force);
+        player.GetPhysics().StartDash(new Vector2(player.iHorz, player.iVert).normalized * dashSpeed);
     }
 
     public override void StateExit()
     {
         player.GetAnimations().ResetAnimParameters();
+        player.GetStateMachine().GetStateTimer().StopTimers();
+        player.GetPhysics().StopDash();
     }
 
-    void Complete()
+    private void Complete()
     {
         player.GetStateMachine().ForceEnterState(new IdleState(player));
-        player.GetPhysics().SetKinematic();
     }
 }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, Damageable
     [ReadOnly] public float iHorz = 0;
     [ReadOnly] public float iVert = 0;
     [ReadOnly] public bool iWorldToggle = false;
+    [ReadOnly] public bool iDash = false;
     [SerializeField] float maxHealth;
     [SerializeField, ReadOnly] float health;
     bool isDamageable;
@@ -70,6 +71,19 @@ public class PlayerController : MonoBehaviour, Damageable
         else if (context.canceled)
         {
             iWorldToggle = false;
+        }
+        stateMachine.HandleInput();
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            iDash = true;
+        }
+        else if (context.canceled)
+        {
+            iDash = false;
         }
         stateMachine.HandleInput();
     }

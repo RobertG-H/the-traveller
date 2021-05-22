@@ -17,7 +17,7 @@ public class PlayerAnimations : MonoBehaviour
 
     void Update()
     {
-        CheckFacingDirection();
+        if (!player.iDash && !player.iWorldToggle) CheckFacingDirection();
         CheckFlashing();
     }
 
