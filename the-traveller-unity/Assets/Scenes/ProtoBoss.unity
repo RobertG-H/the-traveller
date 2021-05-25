@@ -1738,14 +1738,6 @@ PrefabInstance:
       propertyPath: futureRealm
       value: 
       objectReference: {fileID: 1828635426}
-    - target: {fileID: 4973143475475746864, guid: eaa9a5c16e82fe749a56b91f93383173, type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7343256476694237028, guid: eaa9a5c16e82fe749a56b91f93383173, type: 3}
-      propertyPath: isDebug
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7343256476694237028, guid: eaa9a5c16e82fe749a56b91f93383173, type: 3}
       propertyPath: hudController
       value: 
