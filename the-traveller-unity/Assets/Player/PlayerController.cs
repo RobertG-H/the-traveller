@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour, Damageable
     PlayerStateMachine stateMachine;
     [SerializeField] PlayerAnimations animations;
     [SerializeField] HUDController hudController;
+    [SerializeField] GameObject dashHitboxObject;
+
     WorldToggler worldToggler;
 
     [Header("Debug")]
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour, Damageable
         physics = GetComponent<PlayerPhysics>();
         stateMachine = GetComponent<PlayerStateMachine>();
         worldToggler = GetComponent<WorldToggler>();
+
     }
 
     void Start()
@@ -42,6 +45,8 @@ public class PlayerController : MonoBehaviour, Damageable
         hudController.SetCurrentHealth(health);
         hudController.SetCurrentTimeEnergy(timeEnergy);
         isDamageable = true;
+        dashHitboxObject.SetActive(false);
+
     }
     #region Player Actions
 
@@ -89,10 +94,12 @@ public class PlayerController : MonoBehaviour, Damageable
         if (context.started)
         {
             iDash = true;
+            dashHitboxObject.SetActive(true);
         }
         else if (context.canceled)
         {
             iDash = false;
+            dashHitboxObject.SetActive(false);
         }
         stateMachine.HandleInput();
     }

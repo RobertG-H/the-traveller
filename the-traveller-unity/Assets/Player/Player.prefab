@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7995438973438075491}
   - component: {fileID: 4617871467246442006}
   m_Layer: 8
-  m_Name: DashHurtbox
+  m_Name: DashHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,6 +487,7 @@ MonoBehaviour:
   timeEnergy: 0
   animations: {fileID: 5699673948441249726}
   hudController: {fileID: 0}
+  dashHitboxObject: {fileID: 109262751}
   isDebug: 1
 --- !u!114 &7343256476694237035
 MonoBehaviour:
