@@ -19,12 +19,15 @@ public class MinionController : MonoBehaviour, IGiveTimeEnergy
     [SerializeField] GameObject fire;
     [SerializeField] GameObject hitBox;
     [SerializeField, ReadOnly] MinionStates currentState;
-    [SerializeField] float timeToToggle = 1.5f;
+    [SerializeField] float timeToToggleMin = 1.1f;
+    [SerializeField] float timeToToggleMax = 2.3f;
     [SerializeField] float timeEnergy = 25f;
 
+    float timeToToggle;
     bool damageTimerOn;
     bool needToDamageToggle;
     bool isInDamageMode;
+    AIDestinationSetter destinationSetter;
 
     void Awake()
     {
@@ -33,7 +36,10 @@ public class MinionController : MonoBehaviour, IGiveTimeEnergy
         isInDamageMode = false;
         needToDamageToggle = false;
         damageTimerOn = false;
+        timeToToggle = Random.Range(timeToToggleMin, timeToToggleMax);
         fire.SetActive(false);
+
+        destinationSetter = GetComponent<AIDestinationSetter>();
     }
     void ChangeState(MinionStates newState)
     {
@@ -112,6 +118,11 @@ public class MinionController : MonoBehaviour, IGiveTimeEnergy
             fire.SetActive(true);
             hitBox.SetActive(false);
         }
+    }
+
+    public void SetPathTarget(Transform newTarget)
+    {
+        destinationSetter.target = newTarget;
     }
 
     void OnDisable()

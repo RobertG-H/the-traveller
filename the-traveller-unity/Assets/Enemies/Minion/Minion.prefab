@@ -298,7 +298,8 @@ MonoBehaviour:
   fire: {fileID: 134936519050674217}
   hitBox: {fileID: 1105255480133449911}
   currentState: 0
-  timeToToggle: 3
+  timeToToggleMin: 1.8
+  timeToToggleMax: 2.8
   timeEnergy: 25
 --- !u!114 &154972592
 MonoBehaviour:
