@@ -81,6 +81,7 @@ public class PlayerPhysics : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (p.isDead) return;
         if (rb.isKinematic)
         {
             if (!ignoreFriction) ApplyFriction();

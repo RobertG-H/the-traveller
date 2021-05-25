@@ -7,6 +7,9 @@ public class HUDController : MonoBehaviour
 {
     public GameObject healthIconParent;
     public GameObject healthIconPrefab;
+    public GameObject helpDetails;
+    public GameObject deathText;
+    public GameObject winText;
     public TextMeshProUGUI timeEnergyText;
     private Dictionary<int, HealthIcon> healthIcons; // Uses 1 as base index
     private int currentHealth = 0;
@@ -14,6 +17,11 @@ public class HUDController : MonoBehaviour
     void Awake()
     {
         healthIcons = new Dictionary<int, HealthIcon>();
+        helpDetails.SetActive(false);
+        deathText.SetActive(false);
+        winText.SetActive(false);
+
+
     }
     public void SetMaxHealth(int maxHealth)
     {
@@ -64,6 +72,21 @@ public class HUDController : MonoBehaviour
     public void SetCurrentTimeEnergy(float timeEnergy)
     {
         timeEnergyText.text = "Time Energy: " + timeEnergy.ToString();
+    }
+
+    public void ToggleHelpDetails()
+    {
+        helpDetails.SetActive(!helpDetails.activeSelf);
+    }
+
+    public void ShowDeathText()
+    {
+        deathText.SetActive(true);
+    }
+
+    public void ShowWinText()
+    {
+        winText.SetActive(true);
     }
 
 }

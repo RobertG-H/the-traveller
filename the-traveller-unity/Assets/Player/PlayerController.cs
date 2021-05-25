@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, Damageable
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour, Damageable
     [SerializeField] float maxTimeEnergy;
     [SerializeField, ReadOnly] float timeEnergy;
     bool isDamageable;
+    public bool isDead = false;
     PlayerPhysics physics;
     PlayerStateMachine stateMachine;
     [SerializeField] PlayerAnimations animations;
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour, Damageable
     [SerializeField] GameObject dashHitboxObject;
 
     WorldToggler worldToggler;
+
 
     [Header("Debug")]
     [SerializeField] bool isDebug;
@@ -104,6 +107,16 @@ public class PlayerController : MonoBehaviour, Damageable
         stateMachine.HandleInput();
     }
 
+    public void OnToggleHelp(InputAction.CallbackContext context)
+    {
+        hudController.ToggleHelpDetails();
+    }
+
+    public void OnReset(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     #endregion
 
     #region Getters and Setters
@@ -126,13 +139,17 @@ public class PlayerController : MonoBehaviour, Damageable
 
     void Damageable.TakeDamage(int damage)
     {
+        if (isDead) return;
         health -= damage;
         StartCoroutine(InvincibleTimer());
+        if (health <= 0) PlayerDied();
     }
 
     void Damageable.TakeDamage(int damage, Vector2 force)
     {
+        if (isDead) return;
         health -= damage;
+        if (health <= 0) PlayerDied();
         hudController.SetCurrentHealth(health);
         stateMachine.ForceEnterState(new HitStunState(this, force));
         StartCoroutine(InvincibleTimer());
@@ -167,6 +184,14 @@ public class PlayerController : MonoBehaviour, Damageable
             animations.isFlashing = false;
         }
     }
+
+    void PlayerDied()
+    {
+        isDead = true;
+        hudController.ShowDeathText();
+    }
+
+
 
 
 }

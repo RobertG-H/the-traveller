@@ -36,6 +36,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     void CheckNewState(PlayerState newState)
     {
+        if (player.isDead) return;
         if (newState == null || newState.ToString() == state.ToString())
             return;
 

@@ -460,6 +460,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e509ba5f-bb84-44b7-882c-cc06f67dd840
     m_ActionName: Gameplay/Dash[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7343256476694237028}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnToggleHelp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 979e4014-c147-46ea-9871-9cb9557ebb1a
+    m_ActionName: Gameplay/Help[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7343256476694237028}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnReset
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 67456937-3e25-4a1c-a7e6-bbad0f232ce8
+    m_ActionName: Gameplay/Restart[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -485,6 +517,7 @@ MonoBehaviour:
   health: 0
   maxTimeEnergy: 100
   timeEnergy: 0
+  isDead: 0
   animations: {fileID: 5699673948441249726}
   hudController: {fileID: 0}
   dashHitboxObject: {fileID: 109262751}
@@ -509,7 +542,7 @@ MonoBehaviour:
   SKIN_WIDTH: 0.02
   HORIZONTAL_RAY_COUNT: 4
   VERTICAL_RAY_COUNT: 4
-  isDebug: 1
+  isDebug: 0
 --- !u!114 &4079089512292985894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3e506dd729f334a8c92f513f85485e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebug: 1
+  isDebug: 0
 --- !u!114 &8025420305271997875
 MonoBehaviour:
   m_ObjectHideFlags: 0
