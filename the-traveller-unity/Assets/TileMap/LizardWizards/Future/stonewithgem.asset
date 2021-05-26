@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stonewithgem
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 14dba4b0a60b913408bdc1ea27a7f464, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
   m_Transform:
     e00: 1
     e01: 0

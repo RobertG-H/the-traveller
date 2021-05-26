@@ -10,6 +10,7 @@ public static class LayerMaskConfig
         DEFAULT = 1 << LayerMask.NameToLayer("Player");
         DEFAULT += 1 << LayerMask.NameToLayer("Ignore Raycast");
         DEFAULT += 1 << LayerMask.NameToLayer("Hitbox");
+        DEFAULT += 1 << LayerMask.NameToLayer("Cursor");
 
 
         DEFAULT = ~DEFAULT;

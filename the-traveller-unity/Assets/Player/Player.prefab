@@ -182,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 2279776277656357575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 7343256476694237033}
   m_RootOrder: 1
@@ -492,6 +492,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 67456937-3e25-4a1c-a7e6-bbad0f232ce8
     m_ActionName: Gameplay/Restart[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7343256476694237028}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnMouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cf820986-0f9d-49c9-aa4c-fcb23efef53c
+    m_ActionName: Gameplay/Mouse[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8015af15-2aca-4aff-a1d3-a86aa732155e
+    m_ActionName: Gameplay/Click[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -513,6 +533,7 @@ MonoBehaviour:
   iVert: 0
   iWorldToggle: 0
   iDash: 0
+  mousePosition: {x: 0, y: 0}
   maxHealth: 5
   health: 0
   maxTimeEnergy: 100

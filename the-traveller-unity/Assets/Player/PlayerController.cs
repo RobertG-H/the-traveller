@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, Damageable
     [ReadOnly] public float iVert = 0;
     [ReadOnly] public bool iWorldToggle = false;
     [ReadOnly] public bool iDash = false;
+    [ReadOnly] public Vector2 mousePosition = Vector2.zero;
     [SerializeField] int maxHealth;
     [SerializeField, ReadOnly] int health;
     [SerializeField] float maxTimeEnergy;
@@ -115,6 +116,11 @@ public class PlayerController : MonoBehaviour, Damageable
     public void OnReset(InputAction.CallbackContext context)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OnMouse(InputAction.CallbackContext context)
+    {
+        mousePosition = context.ReadValue<Vector2>();
     }
 
     #endregion
