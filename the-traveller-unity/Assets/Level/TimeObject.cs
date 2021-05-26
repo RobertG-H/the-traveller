@@ -22,6 +22,7 @@ public class TimeObject : MonoBehaviour, IReceiveTimeEnergy
         }
         pastState.SetActive(isPastState);
         presentState.SetActive(isPresentState);
+        canReceiveTimeEnergy = true;
     }
 
     float IReceiveTimeEnergy.GetRequiredTimeEnergy()
@@ -30,11 +31,33 @@ public class TimeObject : MonoBehaviour, IReceiveTimeEnergy
     }
     void IReceiveTimeEnergy.ReceiveTimeEnergy()
     {
-
+        GoToFuture();
     }
     bool IReceiveTimeEnergy.CanReceiveTimeEnergy()
     {
         return canReceiveTimeEnergy;
+    }
+
+    public void ForceGoToPast()
+    {
+        GoToPast();
+    }
+
+    void GoToFuture()
+    {
+        canReceiveTimeEnergy = false;
+        pastState.SetActive(false);
+        isPastState = false;
+        presentState.SetActive(true);
+        isPresentState = true;
+    }
+
+    void GoToPast()
+    {
+        pastState.SetActive(true);
+        isPastState = true;
+        presentState.SetActive(false);
+        isPresentState = false;
     }
 
 }

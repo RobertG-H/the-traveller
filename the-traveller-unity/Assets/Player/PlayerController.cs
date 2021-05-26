@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, Damageable
     [ReadOnly] public float iVert = 0;
     [ReadOnly] public bool iWorldToggle = false;
     [ReadOnly] public bool iDash = false;
+    [ReadOnly] public bool iClick = false;
     [ReadOnly] public Vector2 mousePosition = Vector2.zero;
     [SerializeField] int maxHealth;
     [SerializeField, ReadOnly] int health;
@@ -123,6 +124,18 @@ public class PlayerController : MonoBehaviour, Damageable
         mousePosition = context.ReadValue<Vector2>();
     }
 
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            iClick = true;
+        }
+        else if (context.canceled)
+        {
+            iClick = false;
+        }
+    }
+
     #endregion
 
     #region Getters and Setters
@@ -139,6 +152,16 @@ public class PlayerController : MonoBehaviour, Damageable
     public PlayerPhysics GetPhysics()
     {
         return physics;
+    }
+
+    public float GetTimeEnergy()
+    {
+        return timeEnergy;
+    }
+
+    public void ResetTimeEnergy()
+    {
+        timeEnergy = 0;
     }
 
     #endregion

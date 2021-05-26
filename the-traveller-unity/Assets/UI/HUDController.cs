@@ -34,7 +34,7 @@ public class HUDController : MonoBehaviour
             for (int i = healthIcons.Count + 1; i <= maxHealth; i++)
             {
                 GameObject newIconObject = Instantiate(healthIconPrefab);
-                newIconObject.transform.parent = healthIconParent.transform;
+                newIconObject.transform.SetParent(healthIconParent.transform);
 
                 healthIcons.Add(i, newIconObject.GetComponent<HealthIcon>());
             }
