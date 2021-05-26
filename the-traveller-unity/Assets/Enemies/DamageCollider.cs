@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     [SerializeField] GameObject objectToDestroy;
+    [SerializeField] GameObject destroyParticle;
     [SerializeField] int damage;
     [SerializeField] float forceMag;
     public void OnTriggerEnter2D(Collider2D other)
@@ -18,7 +19,15 @@ public class DamageCollider : MonoBehaviour
                 // Debug.DrawLine(this.transform.position, other.transform.position, Color.magenta, 5f);
                 damageable.TakeDamage(damage, forceDir * forceMag);
             }
+            if (objectToDestroy)
+            {
+                if (destroyParticle)
+                {
+                    Instantiate(destroyParticle, transform.position, Quaternion.identity);
+                }
+                Destroy(objectToDestroy);
+
+            }
         }
-        if (objectToDestroy) Destroy(objectToDestroy);
     }
 }
