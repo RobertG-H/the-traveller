@@ -44,8 +44,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03476858, y: 0.11997759}
-  m_Size: {x: 1.8449755, y: 3.107062}
+  m_Offset: {x: 0.010215104, y: 0.066387415}
+  m_Size: {x: 1.340206, y: 2.3890314}
   m_Direction: 0
 --- !u!1 &5884071225265688761
 GameObject:
@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 5884071225666175013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.998865, y: 0.26522526, z: -11.018495}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 5884071225265688760}
   - {fileID: 134936519050674218}
@@ -248,7 +248,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 1.6
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -257,7 +257,7 @@ MonoBehaviour:
   orientation: 1
   enableRotation: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: 10
+  maxAcceleration: 12
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1
@@ -377,6 +377,22 @@ PrefabInstance:
     - target: {fileID: 1487644685275243451, guid: f5b0eb8866e45a340975bfd913cfada5, type: 3}
       propertyPath: m_Name
       value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315973104646540585, guid: f5b0eb8866e45a340975bfd913cfada5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.30077627
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315973104646540585, guid: f5b0eb8866e45a340975bfd913cfada5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5111215
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315973104646540585, guid: f5b0eb8866e45a340975bfd913cfada5, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.023901865
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315973104646540585, guid: f5b0eb8866e45a340975bfd913cfada5, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.2176578
       objectReference: {fileID: 0}
     - target: {fileID: 3167791833740163706, guid: f5b0eb8866e45a340975bfd913cfada5, type: 3}
       propertyPath: forceMag

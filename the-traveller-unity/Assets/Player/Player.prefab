@@ -533,6 +533,7 @@ MonoBehaviour:
   iVert: 0
   iWorldToggle: 0
   iDash: 0
+  iClick: 0
   mousePosition: {x: 0, y: 0}
   maxHealth: 5
   health: 0
@@ -557,9 +558,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p: {fileID: 7343256476694237028}
   ECB: {fileID: 7343256475331655538}
-  WALK_MAX_SPEED: 10
-  WALK_ACCEL: 100
-  FRICTION_GROUND: 70
+  WALK_MAX_SPEED: 13
+  WALK_ACCEL: 700
+  FRICTION_GROUND: 220
   SKIN_WIDTH: 0.02
   HORIZONTAL_RAY_COUNT: 4
   VERTICAL_RAY_COUNT: 4

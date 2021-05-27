@@ -16,27 +16,31 @@ public class RockThrower : MonoBehaviour
         player = playerObj.GetComponent<PlayerController>();
     }
 
-    void Start()
+    void OnEnable()
     {
         Invoke("ThrowRock", Random.Range(timeToThrowMin, timeToThrowMax));
-
     }
-
-
-
     void ThrowRock()
     {
-        // Throw rock
-        Instantiate(RockPrefab, transform.position, Quaternion.identity);
+        if (!isActiveAndEnabled) return;
+        float angleToMove = GetThrowDirection();
+        Debug.Log(angleToMove);
 
+        GameObject newRock = Instantiate(RockPrefab, transform.position, Quaternion.Euler(0, 0, 180 - angleToMove));
+        newRock.transform.parent = this.transform;
         // Queue itself
         Invoke("ThrowRock", Random.Range(timeToThrowMin, timeToThrowMax));
-
     }
 
-    void GetThrowDirection()
+    float GetThrowDirection()
     {
-        player.GetPhysics().GetVel();
-        // Vector2 newPos
+        Vector3 targetPos = player.transform.position + (Vector3)player.GetPhysics().GetVel() * leadTime;
+        float h = (transform.position - targetPos).magnitude;
+        float a = (transform.position - targetPos).y;
+        // aim to the right
+        if (transform.position.x < targetPos.x) return Mathf.Acos(a / h) * Mathf.Rad2Deg * -1;
+
+        //aim to the left
+        return Mathf.Acos(a / h) * Mathf.Rad2Deg;
     }
 }

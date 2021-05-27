@@ -1,5 +1,5 @@
 using UnityEngine;
-interface Damageable
+public interface Damageable
 {
     void TakeDamage(int damage);
     void TakeDamage(int damage, Vector2 force);

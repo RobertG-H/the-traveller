@@ -10,7 +10,7 @@ public class DamageCollider : MonoBehaviour
     [SerializeField] float forceMag;
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Barrier"))
         {
             Damageable damageable = other.GetComponent<Damageable>();
             if (damageable.IsDamageable())
@@ -29,5 +29,22 @@ public class DamageCollider : MonoBehaviour
 
             }
         }
+        // else if (other.CompareTag("Barrier"))
+        // {
+        //     Damageable damageable = other.transform.parent.GetComponent<Damageable>();
+        //     if (damageable.IsDamageable())
+        //     {
+        //         damageable.TakeDamage(damage);
+        //     }
+        //     if (objectToDestroy)
+        //     {
+        //         if (destroyParticle)
+        //         {
+        //             Instantiate(destroyParticle, transform.position, Quaternion.identity);
+        //         }
+        //         Destroy(objectToDestroy);
+
+        //     }
+        // }
     }
 }
