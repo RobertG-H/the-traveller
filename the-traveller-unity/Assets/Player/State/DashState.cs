@@ -24,6 +24,8 @@ public class DashState : PlayerState
         player.GetAnimations().SetTrigger("Dash");
         player.GetStateMachine().GetStateTimer().AddTimer(new StateTimerCallbackDelegate(Complete), duration);
         player.GetPhysics().StartDash(new Vector2(player.iHorz, player.iVert).normalized * dashSpeed);
+        player.dashHitboxObject.SetActive(true);
+
     }
 
     public override void StateExit()
@@ -31,6 +33,8 @@ public class DashState : PlayerState
         player.GetAnimations().ResetAnimParameters();
         player.GetStateMachine().GetStateTimer().StopTimers();
         player.GetPhysics().StopDash();
+        player.dashHitboxObject.SetActive(false);
+
     }
 
     private void Complete()

@@ -17,6 +17,13 @@ public class BossController : MonoBehaviour
     bool canShockwave = true;
     bool isDamaged = false;
 
+    AudioSource audioSource;
+
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void OnEnable()
     {
@@ -51,6 +58,7 @@ public class BossController : MonoBehaviour
     public void DoShockwave()
     {
         if (isDamaged) return;
+        audioSource.Play();
         CreateShockwave(new Vector3(0, 0, -5));
         CreateShockwave(new Vector3(0, 0, -90));
         CreateShockwave(new Vector3(0, 0, -135));

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour, Damageable
     PlayerStateMachine stateMachine;
     [SerializeField] PlayerAnimations animations;
     [SerializeField] HUDController hudController;
-    [SerializeField] GameObject dashHitboxObject;
+    public GameObject dashHitboxObject;
 
     WorldToggler worldToggler;
 
@@ -104,12 +104,10 @@ public class PlayerController : MonoBehaviour, Damageable
         if (context.started)
         {
             iDash = true;
-            dashHitboxObject.SetActive(true);
         }
         else if (context.canceled)
         {
             iDash = false;
-            dashHitboxObject.SetActive(false);
         }
         stateMachine.HandleInput();
     }
