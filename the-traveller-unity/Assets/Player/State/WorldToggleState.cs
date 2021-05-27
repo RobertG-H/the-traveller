@@ -26,6 +26,8 @@ public class WorldToggleState : PlayerState
     public override void StateEnter()
     {
         // Start timer
+        player.SetWorldToggleParticles(true);
+
         player.GetAnimations().SetTrigger("WorldToggling");
         player.GetStateMachine().GetStateTimer().AddTimer(new StateTimerCallbackDelegate(Complete), duration);
     }
@@ -33,6 +35,8 @@ public class WorldToggleState : PlayerState
     public override void StateExit()
     {
         player.GetAnimations().ResetAnimParameters();
+        player.SetWorldToggleParticles(false);
+
         if (success)
         {
             player.WorldToggle();

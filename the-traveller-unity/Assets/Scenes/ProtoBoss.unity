@@ -346,6 +346,10 @@ PrefabInstance:
       propertyPath: m_ChunkCullingBounds.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1949126409553965897, guid: 299e531a663eb4040a028f431bde0051, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2232281858877998464, guid: 299e531a663eb4040a028f431bde0051, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.97
@@ -6661,6 +6665,7 @@ MonoBehaviour:
   pastState: {fileID: 546373033}
   isPastState: 0
   presentState: {fileID: 724632791}
+  presetStateParticles: {fileID: 0}
   isPresentState: 1
 --- !u!1001 &936691974
 PrefabInstance:
@@ -12291,6 +12296,10 @@ PrefabInstance:
     - target: {fileID: 1625345677647077946, guid: 299e531a663eb4040a028f431bde0051, type: 3}
       propertyPath: m_ChunkCullingBounds.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949126409553965897, guid: 299e531a663eb4040a028f431bde0051, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2232281858877998464, guid: 299e531a663eb4040a028f431bde0051, type: 3}
       propertyPath: m_LocalPosition.x

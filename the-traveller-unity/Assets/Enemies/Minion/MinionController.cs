@@ -31,14 +31,6 @@ public class MinionController : MonoBehaviour, IGiveTimeEnergy
 
     void Awake()
     {
-        aiPath.isStopped = true;
-        currentState = MinionStates.Idle;
-        isInDamageMode = false;
-        needToDamageToggle = false;
-        damageTimerOn = false;
-        timeToToggle = Random.Range(timeToToggleMin, timeToToggleMax);
-        fire.SetActive(false);
-
         destinationSetter = GetComponent<AIDestinationSetter>();
     }
     void ChangeState(MinionStates newState)
@@ -46,6 +38,18 @@ public class MinionController : MonoBehaviour, IGiveTimeEnergy
         if (currentState == newState) return;
         currentState = newState;
         animations.ChangeState(newState);
+    }
+
+    void OnEnable()
+    {
+        aiPath.isStopped = true;
+        currentState = MinionStates.Idle;
+        isInDamageMode = false;
+        needToDamageToggle = false;
+        damageTimerOn = false;
+        CancelInvoke();
+        timeToToggle = Random.Range(timeToToggleMin, timeToToggleMax);
+        fire.SetActive(false);
     }
 
     #region Tasks

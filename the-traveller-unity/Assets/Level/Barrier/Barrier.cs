@@ -19,14 +19,10 @@ public class Barrier : MonoBehaviour, Damageable
         currentHealth = maxHealth;
     }
 
-    void OnFix()
-    {
-        Initialize();
-    }
-
     void OnBreak()
     {
         baseTimeObject.ForceGoToPast();
+        Initialize();
     }
 
     public void TakeDamage(int damage)

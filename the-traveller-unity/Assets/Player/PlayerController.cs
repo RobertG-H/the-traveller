@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, Damageable
     [ReadOnly] public float iHorz = 0;
     [ReadOnly] public float iVert = 0;
     [ReadOnly] public bool iWorldToggle = false;
+    [SerializeField] ParticleSystem worldToggleParticles;
     [ReadOnly] public bool iDash = false;
     [ReadOnly] public bool iClick = false;
     [ReadOnly] public Vector2 mousePosition = Vector2.zero;
@@ -51,6 +52,8 @@ public class PlayerController : MonoBehaviour, Damageable
         hudController.SetCurrentTimeEnergy(timeEnergy);
         isDamageable = true;
         dashHitboxObject.SetActive(false);
+        worldToggleParticles.gameObject.SetActive(false);
+
 
     }
     #region Player Actions
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour, Damageable
         if (context.started)
         {
             iWorldToggle = true;
+
         }
         else if (context.canceled)
         {
@@ -162,6 +166,19 @@ public class PlayerController : MonoBehaviour, Damageable
     public void ResetTimeEnergy()
     {
         timeEnergy = 0;
+    }
+
+    public void SetWorldToggleParticles(bool status)
+    {
+        if (status)
+        {
+            worldToggleParticles.gameObject.SetActive(true);
+            worldToggleParticles.Play();
+        }
+        else
+        {
+            worldToggleParticles.gameObject.SetActive(false);
+        }
     }
 
     #endregion

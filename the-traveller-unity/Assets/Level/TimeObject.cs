@@ -12,6 +12,7 @@ public class TimeObject : MonoBehaviour, IReceiveTimeEnergy
     public bool isPastState;
 
     public GameObject presentState;
+    public GameObject presetStateParticles;
     public bool isPresentState;
 
     void Awake()
@@ -22,6 +23,7 @@ public class TimeObject : MonoBehaviour, IReceiveTimeEnergy
         }
         pastState.SetActive(isPastState);
         presentState.SetActive(isPresentState);
+        presetStateParticles.SetActive(isPresentState);
         canReceiveTimeEnergy = true;
     }
 
@@ -49,14 +51,18 @@ public class TimeObject : MonoBehaviour, IReceiveTimeEnergy
         pastState.SetActive(false);
         isPastState = false;
         presentState.SetActive(true);
+        presetStateParticles.SetActive(true);
         isPresentState = true;
+
     }
 
     void GoToPast()
     {
+        canReceiveTimeEnergy = true;
         pastState.SetActive(true);
         isPastState = true;
         presentState.SetActive(false);
+        presetStateParticles.SetActive(false);
         isPresentState = false;
     }
 

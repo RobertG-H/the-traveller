@@ -23,7 +23,7 @@ public class PlayerCooldowns : MonoBehaviour
         callbackTimers = new List<IEnumerator>();
         abilityCooldowns = new Dictionary<string, AbilityCooldown>();
         abilityCooldowns["DashState"] = new AbilityCooldown(1f);
-        abilityCooldowns["WorldToggleState"] = new AbilityCooldown(1f);
+        abilityCooldowns["WorldToggleState"] = new AbilityCooldown(0.1f);
     }
 
     public bool IsOnCooldown(string stateName)

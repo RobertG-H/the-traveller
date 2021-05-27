@@ -14,7 +14,7 @@ public class Rock : MonoBehaviour
         sr.sprite = rockSprites[Random.Range(0, rockSprites.Count)];
     }
 
-    void Start()
+    void OnEnable()
     {
         rb.velocity = transform.up * moveSpeed;
     }
