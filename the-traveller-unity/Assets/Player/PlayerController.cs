@@ -179,6 +179,7 @@ public class PlayerController : MonoBehaviour, Damageable
     public void SubtractTimeEnergy(float amount)
     {
         timeEnergy -= amount;
+        hudController.SetCurrentTimeEnergy(timeEnergy);
     }
 
     public void SetWorldToggleParticles(bool status)

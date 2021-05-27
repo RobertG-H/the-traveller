@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DashState : PlayerState
 {
-    float duration = 0.2f;
-    float dashSpeed = 30f;
+    float duration = 0.15f;
+    float dashSpeed = 34f;
     public DashState(PlayerController player)
     {
         this.player = player;

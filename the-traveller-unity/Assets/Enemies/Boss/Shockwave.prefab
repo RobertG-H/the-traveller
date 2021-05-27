@@ -137,6 +137,7 @@ MonoBehaviour:
   destroyParticle: {fileID: 6291667593647522306, guid: 7e6a27ef9bf6f9e4d84fab776cfdeffc, type: 3}
   damage: 2
   forceMag: 40
+  damageBarrier: 1
 --- !u!114 &908863080535419214
 MonoBehaviour:
   m_ObjectHideFlags: 0

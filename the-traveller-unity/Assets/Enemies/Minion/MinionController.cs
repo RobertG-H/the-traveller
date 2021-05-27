@@ -43,6 +43,8 @@ public class MinionController : MonoBehaviour, IGiveTimeEnergy
     void OnEnable()
     {
         aiPath.isStopped = true;
+        hitBox.SetActive(true);
+
         currentState = MinionStates.Idle;
         isInDamageMode = false;
         needToDamageToggle = false;

@@ -566,7 +566,7 @@ MonoBehaviour:
   iClick: 0
   iInteracting: 0
   mousePosition: {x: 0, y: 0}
-  maxHealth: 5
+  maxHealth: 8
   health: 0
   maxTimeEnergy: 200
   timeEnergy: 0
@@ -684,6 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ac86d3a5d0a46438602d2cbaa01b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 4973143475475746864}
 --- !u!1001 &3967304983372732622
 PrefabInstance:
   m_ObjectHideFlags: 0

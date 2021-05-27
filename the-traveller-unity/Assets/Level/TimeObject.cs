@@ -24,7 +24,7 @@ public class TimeObject : MonoBehaviour, IReceiveTimeEnergy
         pastState.SetActive(isPastState);
         presentState.SetActive(isPresentState);
         presetStateParticles.SetActive(isPresentState);
-        canReceiveTimeEnergy = true;
+        canReceiveTimeEnergy = isPastState;
     }
 
     float IReceiveTimeEnergy.GetRequiredTimeEnergy()

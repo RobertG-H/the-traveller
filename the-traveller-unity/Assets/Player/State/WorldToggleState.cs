@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorldToggleState : PlayerState
 {
     bool success = false;
-    float duration = 0.75f;
+    float duration = 0.6f;
     public WorldToggleState(PlayerController player)
     {
         this.player = player;

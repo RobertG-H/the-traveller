@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4202575798691741177, guid: 3cb23e0b5226c23439aea7354554a8f5, type: 3}
       propertyPath: lengthInSec
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4202575798691741177, guid: 3cb23e0b5226c23439aea7354554a8f5, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4202575798691741183, guid: 3cb23e0b5226c23439aea7354554a8f5, type: 3}
       propertyPath: m_Name

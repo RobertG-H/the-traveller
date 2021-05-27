@@ -10,6 +10,7 @@ public class Cannon : MonoBehaviour
     public bool isFuture;
     bool isShooting = false;
     private float minDistance = 3f;
+    public bool doShootLeft = false;
 
     void OnEnable()
     {
@@ -30,6 +31,11 @@ public class Cannon : MonoBehaviour
         isShooting = true;
         Invoke("ResetShooting", 1f);
         GameObject newShot = Instantiate(cannonShot, transform.position, Quaternion.identity);
+        if (doShootLeft)
+        {
+            newShot.transform.localRotation = Quaternion.Euler(0, 0, -180);
+            newShot.GetComponent<CannonShot>().rb.velocity = newShot.GetComponent<CannonShot>().moveSpeed * transform.right * -1;
+        }
         newShot.transform.parent = transform;
         if (isFuture)
         {

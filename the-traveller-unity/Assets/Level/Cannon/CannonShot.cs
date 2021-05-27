@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CannonShot : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public float moveSpeed;
     [SerializeField] GameObject destroyParticle;
     void Awake()

@@ -17,6 +17,7 @@ public delegate void CooldownCompleteCallbackDelegate(string stateName);
 public class PlayerCooldowns : MonoBehaviour
 {
     Dictionary<string, AbilityCooldown> abilityCooldowns;
+    public SpriteRenderer sr;
     private List<IEnumerator> callbackTimers;
     void Awake()
     {
@@ -50,6 +51,10 @@ public class PlayerCooldowns : MonoBehaviour
             callbackTimers.Add(callbackTimer);
             abilityCooldowns[stateName].onCooldown = true;
         }
+        if (stateName == "DashState")
+        {
+            sr.color = Color.gray;
+        }
     }
 
     IEnumerator CallbackTimer(CooldownCompleteCallbackDelegate callback, float duration, string stateName)
@@ -65,6 +70,11 @@ public class PlayerCooldowns : MonoBehaviour
         if (abilityCooldowns.TryGetValue(stateName, out value))
         {
             abilityCooldowns[stateName].onCooldown = false;
+            if (stateName == "DashState")
+            {
+                sr.color = Color.white;
+            }
         }
+
     }
 }

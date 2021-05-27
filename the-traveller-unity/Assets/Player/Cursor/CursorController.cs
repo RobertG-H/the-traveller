@@ -12,7 +12,7 @@ public class CursorController : MonoBehaviour
     public GameObject energyTextObj;
     public TextMeshProUGUI energyTextMesh;
     IReceiveTimeEnergy currentHover;
-    float minDistance = 5f;
+    float minDistance = 9f;
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -69,6 +69,7 @@ public class CursorController : MonoBehaviour
 
     void UpdateOnHoverStatus()
     {
+        if (currentHover == null) return;
         if (currentHover.CanReceiveTimeEnergy())
         {
             OnHoverCanGiveEnergy();

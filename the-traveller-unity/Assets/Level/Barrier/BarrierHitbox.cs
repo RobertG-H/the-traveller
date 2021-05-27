@@ -19,7 +19,5 @@ public class BarrierHitbox : MonoBehaviour, Damageable
     void Damageable.TakeDamage(int damage, Vector2 force)
     {
         parent.TakeDamage(damage);
-        Debug.Log("TAKE damage");
-
     }
 }
