@@ -8,6 +8,7 @@ TagManager:
   - Cursor
   - TimeObject
   - Barrier
+  - BossHurtbox
   layers:
   - Default
   - TransparentFX

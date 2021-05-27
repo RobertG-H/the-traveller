@@ -18,13 +18,13 @@ public class RockThrower : MonoBehaviour
 
     void OnEnable()
     {
+        CancelInvoke();
         Invoke("ThrowRock", Random.Range(timeToThrowMin, timeToThrowMax));
     }
     void ThrowRock()
     {
         if (!isActiveAndEnabled) return;
         float angleToMove = GetThrowDirection();
-        Debug.Log(angleToMove);
 
         GameObject newRock = Instantiate(RockPrefab, transform.position, Quaternion.Euler(0, 0, 180 - angleToMove));
         newRock.transform.parent = this.transform;

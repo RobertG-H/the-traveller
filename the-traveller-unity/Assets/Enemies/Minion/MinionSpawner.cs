@@ -48,4 +48,16 @@ public class MinionSpawner : MonoBehaviour
             }
         }
     }
+
+    public void Cleanup()
+    {
+        for (int i = spawnedMinions.Count - 1; i > -1; i--)
+        {
+            if (spawnedMinions[i] != null)
+            {
+                Destroy(spawnedMinions[i]);
+            }
+        }
+        Destroy(gameObject);
+    }
 }

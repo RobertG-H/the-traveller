@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorldToggleState : PlayerState
 {
     bool success = false;
-    float duration = 1f;
+    float duration = 0.75f;
     public WorldToggleState(PlayerController player)
     {
         this.player = player;
@@ -40,11 +40,11 @@ public class WorldToggleState : PlayerState
         if (success)
         {
             player.WorldToggle();
-            Debug.Log("world toggle complete!");
+            // Debug.Log("world toggle complete!");
         }
         else
         {
-            Debug.Log("World toggle failed...");
+            // Debug.Log("World toggle failed...");
             player.GetStateMachine().GetStateTimer().StopTimers();
         }
     }

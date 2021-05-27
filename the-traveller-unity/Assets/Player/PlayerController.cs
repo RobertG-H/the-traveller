@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, Damageable
     [SerializeField] ParticleSystem worldToggleParticles;
     [ReadOnly] public bool iDash = false;
     [ReadOnly] public bool iClick = false;
+    [ReadOnly] public bool iInteracting = false;
     [ReadOnly] public Vector2 mousePosition = Vector2.zero;
     [SerializeField] int maxHealth;
     [SerializeField, ReadOnly] int health;
@@ -140,6 +141,18 @@ public class PlayerController : MonoBehaviour, Damageable
         }
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            iInteracting = true;
+        }
+        else if (context.canceled)
+        {
+            iInteracting = false;
+        }
+    }
+
     #endregion
 
     #region Getters and Setters
@@ -163,9 +176,9 @@ public class PlayerController : MonoBehaviour, Damageable
         return timeEnergy;
     }
 
-    public void ResetTimeEnergy()
+    public void SubtractTimeEnergy(float amount)
     {
-        timeEnergy = 0;
+        timeEnergy -= amount;
     }
 
     public void SetWorldToggleParticles(bool status)

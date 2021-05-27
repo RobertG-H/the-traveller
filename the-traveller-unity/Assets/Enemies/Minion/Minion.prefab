@@ -248,7 +248,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 1.6
+  maxSpeed: 2.2
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -257,7 +257,7 @@ MonoBehaviour:
   orientation: 1
   enableRotation: 0
   targetCompatibility: {fileID: 0}
-  maxAcceleration: 12
+  maxAcceleration: 18
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 1
@@ -298,8 +298,8 @@ MonoBehaviour:
   fire: {fileID: 134936519050674217}
   hitBox: {fileID: 1105255480133449911}
   currentState: 0
-  timeToToggleMin: 1.8
-  timeToToggleMax: 2.8
+  timeToToggleMin: 2.2
+  timeToToggleMax: 3.5
   timeEnergy: 25
 --- !u!114 &154972592
 MonoBehaviour:

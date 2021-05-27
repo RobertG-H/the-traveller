@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseTimeObject: {fileID: 0}
-  maxHealth: 3
+  maxHealth: 8
   currentHealth: 0
 --- !u!1 &6383182020970897022
 GameObject:
